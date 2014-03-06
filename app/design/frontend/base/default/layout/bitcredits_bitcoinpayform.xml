@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<layout>
+	<checkout_onepage_paymentmethod>
+		<reference name="checkout.onepage.paymentmethod.root">
+			<block type="core/text" name="bitcredits.desc">
+				<action method="setText">
+					<text>allo</text>
+				</action>
+			</block>
+		</reference>
+	</checkout_onepage_paymentmethod>
+	<checkout_onepage_index>
+		<reference name="head">
+			<block type="core/text" name="bitcredits.lib">
+				<action method="setText">
+					<text><![CDATA[<script type="text/javascript" src="http://api.bitcredits.local:6543/v1/bitcredits.js"></script>]]></text>
+				</action>
+			</block>
+		</reference>
+	</checkout_onepage_index>
+	<checkout_onepage_review> 
+		<reference name="checkout.onepage.review.info.items.after">
+			<block name="widget" type="bitcredits_bitcoinpayform/widget" />
+		</reference>
+	</checkout_onepage_review>	
+</layout>

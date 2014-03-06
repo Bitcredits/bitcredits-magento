@@ -1,0 +1,14 @@
+<div id="bitcredits-payment-zone" style="padding:10px;" class="clear">
+	<style scoped>
+		#bitcredits-payment-box{
+			float:right;
+		}
+	</style>
+	<div id="bitcredits-payment-box">Loading BitCredits Payment Widget...</div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+window.BitCredits = window.BitCredits || [];
+window.BitCredits.push(['setupMagento', <?php $quoteData = $this->getQuote()->getData();echo $quoteData['grand_total']; ?>]);
+//]]>
+</script>
