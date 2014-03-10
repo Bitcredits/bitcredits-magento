@@ -8,6 +8,14 @@
 </div>
 <script type="text/javascript">
 //<![CDATA[
+if (document.getElementById("BitC") == null) {
+	var bitc=document.createElement('script');
+	bitc.type='text/javascript';
+	bitc.setAttribute("id", "BitC");
+	bitc.src = '<?php echo Mage::getStoreConfig('payment/bitcredits_bitcoinpayform/api_endpoint'); ?>/v1/bitcredits.js';
+	var s=document.getElementsByTagName('script')[0];
+	s.parentNode.insertBefore(bitc,s);
+}
 window.BitCredits = window.BitCredits || [];
 window.BitCredits.push(['setupMagento', <?php $quoteData = $this->getQuote()->getData();echo $quoteData['grand_total']; ?>]);
 //]]>
