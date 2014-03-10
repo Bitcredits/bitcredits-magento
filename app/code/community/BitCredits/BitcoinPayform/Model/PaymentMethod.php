@@ -84,16 +84,23 @@ class BitCredits_BitcoinPayform_Model_PaymentMethod extends Mage_Payment_Model_M
         }
 
         $order = $payment->getOrder();
+        $quoteData = $order->getQuote()->getData();
 
         $method = '/v1/transactions';
         $data = array(
             'api_key' => $key,
             'src_token' => $_COOKIE['bitc'],
-            'dst_account' => '/orders/'.$order->getRealOrderId(),
+            'dst_account' => '/magento/orders/'.$order->getRealOrderId(),
             'dst_account_create' => true,
             'amount' => $amount,
+            'data' => array(
+                'email' => $quoteData['customer_email'],
+                'firstname' => $quoteData['customer_firstname'],
+                'lastname' => $quoteData['customer_lastname'],
+                'order_id' => $order->getRealOrderId()
+            )
         );
-
+        
         $ch = curl_init();
         $data_string = json_encode($data);
         curl_setopt($ch, CURLOPT_URL, $endpoint . $method);
