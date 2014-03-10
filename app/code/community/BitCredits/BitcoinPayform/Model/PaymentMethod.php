@@ -106,10 +106,15 @@ class BitCredits_BitcoinPayform_Model_PaymentMethod extends Mage_Payment_Model_M
 
         if(
             $res == null
-         || !isset($res['success'])
-         || !$res['success']
+         || !isset($res['status'])
         ){
             Mage::throwException(Mage::helper('sales')->__('Transaction not completed.'));
+        }elseif($res['status'] == 'error'){
+            if(isset($res['message'])){
+                Mage::throwException(Mage::helper('sales')->__('Error while processing payment: ').$res['message']);
+            }else{
+                Mage::throwException(Mage::helper('sales')->__('Transaction not completed. No error message was provided.'));
+            }
         }
 
         $order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true)->save();
