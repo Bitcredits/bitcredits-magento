@@ -17,6 +17,8 @@ if (document.getElementById("BitC") == null) {
 	s.parentNode.insertBefore(bitc,s);
 }
 window.BitCredits = window.BitCredits || [];
-window.BitCredits.push(['setupMagento', <?php $quoteData = $this->getQuote()->getData();echo $quoteData['grand_total']; ?>]);
+window.BitCredits.push(['onConfigReady', function(){
+	window.BitCredits.push(['setupMagento', <?php $quoteData = $this->getQuote()->getData();echo $quoteData['grand_total']; ?>]);
+}]);
 //]]>
 </script>
