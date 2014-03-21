@@ -76,8 +76,8 @@ class BitCredits_BitcoinPayform_Model_PaymentMethod extends Mage_Payment_Model_M
  
     public function authorize(Varien_Object $payment, $amount) {
 
-        $key = Mage::getStoreConfig('payment/bitcredits_bitcoinpayform/api_key');
-        $endpoint = Mage::getStoreConfig('payment/bitcredits_bitcoinpayform/api_endpoint');
+        $key = Mage::getStoreConfig('payment/bitcredits_bitcoinpayform/api_key');//'IDIOTSGUIDEISNICEANDSWEET';
+        $endpoint = Mage::getStoreConfig('payment/bitcredits_bitcoinpayform/api_endpoint');//'http://api.bitcredits.local:6543';
 
         if(!isset($_COOKIE['bitc'])){
             Mage::throwException(Mage::helper('sales')->__('Could not place order.'));
